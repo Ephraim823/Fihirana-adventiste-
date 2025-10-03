@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIHIRANA - Fampiharana Fihirana Malagasy</title>
+    <title>Fampiharana Fihirana ADVENTISTE </title>
     <style>
         * {
             margin: 0;
@@ -405,12 +405,12 @@
         <header>
             <div class="logo">🎵</div>
             <h1>FIHIRANA</h1>
-            <p class="tagline">Fampiharana Fihirana Malagasy - Maimaim-poana sy Mora Ampiasaina</p>
+            <p class="tagline">Fampiharana Fihirana ADVENTISTE - Maimaim-poana sy Mora Ampiasaina</p>
         </header>
 
         <div class="main-card">
             <div class="version-info">
-                <h3>📱 Version 1.0.0 - Vaovao!</h3>
+                <h3>📱 Version 1.0.0!</h3>
                 <div class="version-details">
                     <div class="detail-item">
                         <span>📦</span>
@@ -443,16 +443,16 @@
 
                 <div class="stats">
                     <div class="stat-item">
-                        <div class="stat-number">10K+</div>
+                        <div class="stat-number" id="downloadCount">0</div>
                         <div class="stat-label">Downloads</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">4.8⭐</div>
-                        <div class="stat-label">Rating</div>
+                        <div class="stat-number">800</div>
+                        <div class="stat-label">Fihirana</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Fihirana</div>
+                        <div class="stat-number">415.6 Ko</div>
+                        <div class="stat-label">Habe</div>
                     </div>
                 </div>
             </div>
@@ -533,47 +533,62 @@
             <p style="font-size: 1.3em; margin-bottom: 15px;">© 2025 FIHIRANA App</p>
             <p>Natao tamin'ny fitiavana ho an'ny Malagasy rehetra 🇲🇬</p>
             <p style="margin-top: 20px; opacity: 0.9;">
-                📧 Contact: ephraimnavalona@gmail.com
+                📧 Contact: votreemail@gmail.com
             </p>
         </footer>
     </div>
 
     <script>
-        // LIEN GOOGLE DRIVE MARINA - Voarakitra avy amin'ny lien nomenao
-        const DOWNLOAD_LINK = 'https://drive.google.com/uc?export=download&id=1oaGPFP2hOJYzXZZySTYGgMpuNf-NKJdU';
+        const DOWNLOAD_LINK = 'https://drive.google.com/uc?export=download&id=1YDeZij3Z8kWZELDcISHGqh25R_L1Xlfk';
+        
+        let downloadCount = 0;
+
+        function updateDownloadDisplay() {
+            const displayElement = document.getElementById('downloadCount');
+            if (displayElement) {
+                displayElement.textContent = downloadCount.toString();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDownloadDisplay();
+            
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+            });
+        });
 
         document.getElementById('download-btn').addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Mampiseho loading state miaraka animation
             const originalText = this.innerHTML;
             this.innerHTML = '<span style="font-size: 1.3em;">⏳</span><span>MANOMBOKA...</span>';
             this.style.pointerEvents = 'none';
             this.style.opacity = '0.7';
             this.style.transform = 'scale(0.95)';
             
-            // Mampiseho success message
             const successMsg = document.getElementById('successMsg');
             successMsg.style.display = 'block';
             
-            // Animation fadeIn ny success message
             setTimeout(() => {
                 successMsg.style.animation = 'fadeInDown 0.5s ease';
             }, 100);
             
-            // Manomboka ny download
             setTimeout(() => {
-                // Redirect mankany Google Drive
                 window.location.href = DOWNLOAD_LINK;
                 
-                // Reset button rehefa avy 2 segondra
+                downloadCount++;
+                updateDownloadDisplay();
+                
                 setTimeout(() => {
                     this.innerHTML = originalText;
                     this.style.pointerEvents = 'auto';
                     this.style.opacity = '1';
                     this.style.transform = 'scale(1)';
                     
-                    // Manafina ny success message rehefa avy 5 segondra
                     setTimeout(() => {
                         successMsg.style.display = 'none';
                     }, 5000);
@@ -581,7 +596,6 @@
             }, 600);
         });
 
-        // Animation scroll ho an'ny feature cards
         window.addEventListener('scroll', function() {
             const cards = document.querySelectorAll('.feature-card');
             cards.forEach((card, index) => {
@@ -595,20 +609,9 @@
             });
         });
 
-        // Initialize cards hidden
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.feature-card');
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'all 0.6s ease';
-            });
-        });
-
-        // Console log ho an'ny debugging
         console.log('🎵 FIHIRANA Download Page - Vonona!');
         console.log('📥 Download link configured:', DOWNLOAD_LINK);
         console.log('✅ Ready to download APK file');
     </script>
 </body>
-    </html>
+</html>
