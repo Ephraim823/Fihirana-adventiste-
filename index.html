@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIHIRANA - ADVANTISTA </title>
+    <title>Download - Fihirana SDA</title>
     <style>
         * {
             margin: 0;
@@ -13,577 +13,391 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
             min-height: 100vh;
-            color: #333;
+            color: #e0e0e0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(210, 180, 140, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(193, 154, 107, 0.06) 0%, transparent 50%);
+            animation: ambientMove 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes ambientMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-5%, 5%) rotate(1deg); }
+            66% { transform: translate(5%, -5%) rotate(-1deg); }
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 80px 30px;
+            position: relative;
+            z-index: 1;
         }
 
-        header {
+        .hero {
             text-align: center;
+            margin-bottom: 80px;
             padding: 60px 20px;
-            color: white;
-            animation: fadeInDown 1s ease;
+            background: linear-gradient(145deg, rgba(42, 42, 42, 0.6), rgba(31, 31, 31, 0.4));
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(210, 180, 140, 0.15);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .logo-container {
+            margin-bottom: 30px;
+            animation: logoFloat 3s ease-in-out infinite;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .logo {
-            font-size: 5em;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            animation: pulse 2s ease-in-out infinite;
+            width: 120px;
+            height: 120px;
+            filter: drop-shadow(0 10px 30px rgba(210, 180, 140, 0.4));
+            transition: all 0.4s ease;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 15px 40px rgba(210, 180, 140, 0.6));
         }
 
         h1 {
-            font-size: 4em;
-            margin-bottom: 15px;
-            font-family: serif;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 3px 3px 8px rgba(0,0,0,0.4);
-            letter-spacing: 3px;
-        }
-
-        .tagline {
-            font-size: 1.4em;
-            opacity: 0.95;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-        }
-
-        .main-card {
-            background: white;
-            border-radius: 30px;
-            padding: 60px;
-            margin: 30px auto;
-            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
-            max-width: 950px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .download-section {
-            text-align: center;
-            margin: 50px 0;
-            padding: 30px;
-            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
-            border-radius: 25px;
-        }
-
-        .version-info {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .version-info h3 {
-            font-size: 1.8em;
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #d2b48c 0%, #f4e4c1 50%, #d2b48c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(210, 180, 140, 0.3);
+            animation: titleGlow 3s ease-in-out infinite;
         }
 
-        .version-details {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
         }
 
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255,255,255,0.2);
-            padding: 12px 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .detail-item span:first-child {
-            font-size: 1.5em;
-        }
-
-        .download-buttons {
-            margin: 40px 0;
-        }
-
-        .btn {
-            padding: 22px 50px;
-            font-size: 1.4em;
-            border: none;
-            border-radius: 60px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
-        }
-
-        .btn:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
-            padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 2px solid transparent;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
-        }
-
-        .feature-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        .feature-card h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.4em;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 1.05em;
-        }
-
-        .screenshots {
-            margin: 60px 0;
-            text-align: center;
-        }
-
-        .screenshots h2 {
-            color: #667eea;
-            margin-bottom: 40px;
-            font-size: 2.5em;
-        }
-
-        .screenshot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-
-        .screenshot-placeholder {
-            background: linear-gradient(135deg, #e8ecff 0%, #f5f7fa 100%);
-            border-radius: 20px;
-            padding: 120px 20px;
-            color: #999;
-            border: 3px dashed #ccc;
-            font-size: 1.1em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .screenshot-placeholder:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: #667eea;
-            transform: scale(1.05);
-        }
-
-        .instructions {
-            background: linear-gradient(135deg, #fff9e6 0%, #fffdf5 100%);
-            padding: 40px;
-            border-radius: 25px;
-            margin: 40px 0;
-            border-left: 8px solid #ffd700;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
-        }
-
-        .instructions h3 {
-            color: #d4a017;
-            margin-bottom: 25px;
-            font-size: 1.8em;
-        }
-
-        .instructions ol {
-            margin-left: 30px;
-            line-height: 2.2;
-        }
-
-        .instructions li {
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        .instructions li strong {
-            color: #d4a017;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            color: white;
-            margin-top: 60px;
-        }
-
-        footer p {
-            font-size: 1.1em;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-        }
-
-        .warning {
-            background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
-            border: 3px solid #ffc107;
-            padding: 30px;
-            border-radius: 20px;
-            margin: 30px 0;
-            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.2);
-        }
-
-        .warning strong {
-            color: #856404;
-            font-size: 1.2em;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .warning ul {
-            margin-left: 25px;
+        .subtitle {
+            font-size: 22px;
+            color: #b8b8b8;
+            font-weight: 300;
+            letter-spacing: 1px;
             margin-top: 15px;
         }
 
-        .warning li {
-            margin-bottom: 10px;
-            color: #856404;
-            font-size: 1.05em;
+        .download-section {
+            background: linear-gradient(145deg, rgba(42, 42, 42, 0.7), rgba(31, 31, 31, 0.5));
+            border-radius: 25px;
+            padding: 60px 50px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(210, 180, 140, 0.2);
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(210, 180, 140, 0.05), transparent);
+            animation: shine 8s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 200%; }
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #d2b48c;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-shadow: 0 4px 20px rgba(210, 180, 140, 0.2);
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 22px 60px;
+            background: linear-gradient(135deg, #d2b48c 0%, #c19a6b 100%);
+            color: #0f0f0f;
+            text-decoration: none;
+            border-radius: 16px;
+            font-size: 20px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 10px 40px rgba(210, 180, 140, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .download-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 20px 60px rgba(210, 180, 140, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .download-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .btn-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, rgba(42, 42, 42, 0.6), rgba(31, 31, 31, 0.4));
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(210, 180, 140, 0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d2b48c, transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .feature-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(210, 180, 140, 0.4);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.6),
+                0 0 40px rgba(210, 180, 140, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d2b48c 0%, #c19a6b 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(210, 180, 140, 0.3);
+            font-size: 28px;
+            color: #0f0f0f;
+            font-weight: 700;
+        }
+
+        .feature-title {
+            font-size: 22px;
+            color: #d2b48c;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-description {
+            font-size: 16px;
+            color: #b8b8b8;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .info-section {
+            background: linear-gradient(145deg, rgba(42, 42, 42, 0.5), rgba(31, 31, 31, 0.3));
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(210, 180, 140, 0.12);
+            margin-top: 40px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .info-text {
+            font-size: 18px;
+            color: #b8b8b8;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 50px 20px;
+            }
+
             h1 {
-                font-size: 2.5em;
+                font-size: 38px;
             }
 
-            .logo {
-                font-size: 3.5em;
-            }
-            
-            .main-card {
-                padding: 30px 20px;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-                padding: 20px;
-                font-size: 1.2em;
+            .subtitle {
+                font-size: 18px;
             }
 
-            .features {
+            .hero {
+                padding: 40px 20px;
+                margin-bottom: 50px;
+            }
+
+            .download-section {
+                padding: 40px 25px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .download-btn {
+                padding: 18px 40px;
+                font-size: 18px;
+            }
+
+            .features-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
-        }
 
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 40px 0;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .stat-item {
-            text-align: center;
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            min-width: 150px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .stat-number {
-            font-size: 3em;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .stat-label {
-            color: #666;
-            margin-top: 8px;
-            font-size: 1.1em;
-        }
-
-        .success-message {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-            border: 3px solid #28a745;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            display: none;
-            color: #155724;
-            font-size: 1.2em;
-            font-weight: 600;
-            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.3);
-        }
-
-        .download-section h2 {
-            color: #667eea;
-            margin-bottom: 30px;
-            font-size: 2.5em;
+            .feature-card {
+                padding: 30px 25px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="logo">🎵</div>
-            <h1>FIHIRANA</h1>
-            <p class="tagline">FIHIRANA ADVANTISTA </p>
-        </header>
+        <div class="hero">
+            <div class="logo-container">
+                <img src="https://www.typesandsymbols.com/cdn/shop/files/Symbol-Circle_47fb0582-4313-40f2-aee7-04d91cd8df01.png?v=1644336726" alt="SDA Logo" class="logo">
+            </div>
+            <h1>Fihirana SDA</h1>
+            <p class="subtitle">"Mihira Fihiram-baovao ho an' i JÉHOVAH"</p>
+        </div>
 
-        <div class="main-card">
-            <div class="version-info">
-                <h3>📱 Version 1.0.0 </h3>
-                <div class="version-details">
-                    <div class="detail-item">
-                        <span>📦</span>
-                        <span>Habe: 415.6 Ko</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>📅</span>
-                        <span>Daty: 03 Oktobra 2025</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>📱</span>
-                        <span>Android 5.0+</span>
-                    </div>
-                </div>
+        <div class="download-section">
+            <h2 class="section-title">Alao Maimaim-poana</h2>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="download-btn">
+                    <span class="btn-text">TÉLÉCHARGER</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3 class="feature-title">Fikarohana Hira</h3>
+                <p class="feature-description">Tadiavo mora ny fihirana rehetra miaraka amin'ny fikarohana mahomby sy haingana</p>
             </div>
 
-            <div class="download-section">
-                <h2>MAIMAIMPOANA!</h2>
-                
-                <div class="success-message" id="successMsg">
-                    ✅ Manomboka ny téléchargement...!
-                </div>
-                
-                <div class="download-buttons">
-                    <a href="#" class="btn" id="download-btn">
-                        <span style="font-size: 1.3em;">⬇️</span>
-                        <span>TÉLÉCHARGER </span>
-                    </a>
-                </div>
-
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number" id="downloadCount">0</div>
-                        <div class="stat-label">Downloads</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">800</div>
-                        <div class="stat-label">Fihirana</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">415.6 Ko</div>
-                        <div class="stat-label">Habe</div>
-                    </div>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3 class="feature-title">Lesona Sekoly Sabata</h3>
+                <p class="feature-description">Misy lesona ho an'ny lehibe sy ny tanora zokiny mba hanamafy ny finoanao</p>
             </div>
 
-            <div class="instructions">
-                <h3>📋 Fomba Fametrahana - Tsotra Fotsiny!</h3>
-                <ol>
-                    <li>Tsindrio ny bokotra <strong>"SINTONY"</strong> etsy ambony</li>
-                    <li>Rehefa vita ny download, sokafy ny file <strong>"FIHIRANA.apk"</strong> ao amin'ny dossier Downloads</li>
-                    <li>Omeo autorisation ny ao  amin'ny:<br>
-                        <em>Settings → Security → Install from Unknown Sources</em></li>
-                    <li>Tsindrio <strong>"Install"</strong> ary miandry kely(miditra any amin'ny mega.io, avy eo Tsindrio ny bokotra teboka telo ary farany télécharger) (1-2 minitra)</li>
-                    <li>Sokafy!</li>
-                </ol>
+            <div class="feature-card">
+                <div class="feature-icon">❤️</div>
+                <h3 class="feature-title">Hira Tianao</h3>
+                <p class="feature-description">Tehirizo ny hira tianao ka hahazo azy mora foana rehefa ilaina</p>
             </div>
 
-            <div class="warning">
-                <strong>⚠️ Fanamarihana Lehibe::</strong>
-                <ul>
-                    <li>✓ Raha voalohany mametraka APK ianao, mila manome alalana ny telefaonina</li>
-                    <li>✓ Azo antoka 100% ny fampiharana</li>
-                    <li>✓ Raha tsy manomboka ny download dia avereno indray ny téléchargement </li>
-                    <li>✓ Mila connexion internet hanaovana ny téléchargement(5 Mo) </li>
-                    <li>✓ Compatible amin'ny Android 5.0 ka hatramin'ny 14</li>
-                </ul>
+            <div class="feature-card">
+                <div class="feature-icon">📜</div>
+                <h3 class="feature-title">Hira Efa Nojerena</h3>
+                <p class="feature-description">Zahao mora ny hira efa novakinao mba hanaovana fitarihana eo amin'ny fiangonana</p>
             </div>
 
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">🎵</div>
-                    <h3>Fihirana Be Dia Be</h3>
-                    <p>Ahitana hira 756(mbola tsy ampy 44)</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">⭐</div>
-                    <h3>Favorites</h3>
-                    <p>Tehirizo ny fihirana tianao indrindra ho amin'ny lisitra manokana</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Fikarohana Haingana</h3>
-                    <p>Hitady teny na laharan-kira </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📝</div>
-                    <h3>Fanamarihana</h3>
-                    <p>Afaka mitahiry lahatsoratra ianao (voatahiry automatique) </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Couleur </h3>
-                    <p>Misy mode sombre sy claire </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Tsy Mila Internet</h3>
-                    <p>Miasa tsara tanteraka na dia tsy misy connexion aza rehefa napetraka</p>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3 class="feature-title">Block Notes</h3>
+                <p class="feature-description">Soraty ny naoty na fanamarihana momba ny lesona sy fihirana</p>
             </div>
+        </div>
 
-        <footer>
-            <p style="font-size: 1.3em; margin-bottom: 15px;">© 2025 FIHIRANA App</p>
-            <p>Ho an'ny ADVANTISTA </p>
-            <p style="margin-top: 20px; opacity: 0.9;">
-                📧 Contact: ephraimnavalona@gmail.com
+        <div class="info-section">
+            <p class="info-text">
+                Natao hanampiana anao amin'ny fanompoam-pivavahana sy ny fianarana baiboly. 
+                Misy fihirana malagasy sy tononkira feno.
             </p>
-        </footer>
+        </div>
     </div>
 
     <script>
-        const DOWNLOAD_LINK = 'https://mega.nz/file/XxA2XL7I#ZTqDTT3wwWx-VZhVd3Hb7ZluMir9wqlHgmf7mQfBES8';
-        
-        let downloadCount = 0;
-
-        function updateDownloadDisplay() {
-            const displayElement = document.getElementById('downloadCount');
-            if (displayElement) {
-                displayElement.textContent = downloadCount.toString();
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            updateDownloadDisplay();
-            
-            const cards = document.querySelectorAll('.feature-card');
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'all 0.6s ease';
-            });
-        });
-
-        document.getElementById('download-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const originalText = this.innerHTML;
-            this.innerHTML = '<span style="font-size: 1.3em;">⏳</span><span>MANOMBOKA...</span>';
-            this.style.pointerEvents = 'none';
-            this.style.opacity = '0.7';
-            this.style.transform = 'scale(0.95)';
-            
-            const successMsg = document.getElementById('successMsg');
-            successMsg.style.display = 'block';
-            
-            setTimeout(() => {
-                successMsg.style.animation = 'fadeInDown 0.5s ease';
-            }, 100);
-            
-            setTimeout(() => {
-                window.location.href = DOWNLOAD_LINK;
-                
-                downloadCount++;
-                updateDownloadDisplay();
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.pointerEvents = 'auto';
-                    this.style.opacity = '1';
-                    this.style.transform = 'scale(1)';
-                    
-                    setTimeout(() => {
-                        successMsg.style.display = 'none';
-                    }, 5000);
-                }, 2000);
-            }, 600);
-        });
-
         window.addEventListener('scroll', function() {
             const cards = document.querySelectorAll('.feature-card');
             cards.forEach((card, index) => {
@@ -598,7 +412,6 @@
         });
 
         console.log('Download - Vonona e!');
-        
     </script>
 </body>
-</html>
+    </html>
